@@ -1,0 +1,4 @@
+data/certbot/*
+!data/certbot/.gitkeep
+data/mongo/*
+!data/mongo/.gitkeep
