@@ -31,8 +31,8 @@ services:
   mongo:
     image: mongo:3.6.2
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=Ur7tc5\L~_$r9>2d~%vaJTJ2-,6R]yz)
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
     ports:
       - "27017:27017"
     logging:
@@ -42,3 +42,17 @@ services:
         max-file: "2"
     volumes:
       - ./data/mongo:/data/db
+  keystone:
+    build: ./keystone
+    restart: always
+    environment:
+      - KEYSTONE_ADMIN_EMAIL=${KEYSTONE_ADMIN_EMAIL}
+      - KEYSTONE_ADMIN_PASSWORD=${KEYSTONE_ADMIN_PASSWORD}
+      - KEYSTONE_COOKIE_SECRET=${KEYSTONE_COOKIE_SECRET}
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+    logging:
+      driver: json-file
+      options:
+        max-size: "100m"
+        max-file: "2"

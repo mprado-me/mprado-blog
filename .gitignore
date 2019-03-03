@@ -1,4 +1,8 @@
-data/certbot/*
+data/certbot/**
 !data/certbot/.gitkeep
-data/mongo/*
+data/mongo/**
 !data/mongo/.gitkeep
+keystone/server/public/**
+!keystone/server/public/.gitkeep
+keystone/node_modules
+.env
