@@ -5,7 +5,6 @@ import { Container } from 'semantic-ui-react'
 
 class Layout extends Component {
     constructor(props) {
-        console.log(props);
         super(props);
     }
 

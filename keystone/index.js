@@ -1,5 +1,19 @@
+const nconf = require('nconf');
+
 // import keystone
 var keystone = require('keystone');
+
+// Setting dev or prod configs
+nconf.env().argv().required(['NODE_ENV']);
+if(nconf.get('NODE_ENV') == 'prod'){
+    nconf.file({file: "configs/prod.json"});
+}
+else if(nconf.get('NODE_ENV') == 'dev') {
+    nconf.file({file: "configs/dev.json"});
+}
+else {
+    throw Error("NODE_ENV deve pertencer a ['dev', 'prod']");
+}
 
 // Set up our keystone instance
 keystone.init({
@@ -17,14 +31,14 @@ keystone.init({
 	// or run transformation scripts against your database.
 	'auto update': true,
 	// The url for your MongoDB connection
-	'mongo': `mongodb://${process.env.MONGO_INITDB_ROOT_USERNAME}:${process.env.MONGO_INITDB_ROOT_PASSWORD}@mongo:27017/keystonereactcms?authSource=admin`,
+	'mongo': `mongodb://${nconf.get('MONGO_INITDB_ROOT_USERNAME')}:${nconf.get('MONGO_INITDB_ROOT_PASSWORD')}@${nconf.get("mongoHost")}:27017/keystonereactcms?authSource=admin`,
 	// Whether to enable built-in authentication for Keystone's Admin UI,
 	'auth': true,
 	// The key of the Keystone List for users, required if auth is set to true
 	'user model': 'User',
 	// The encryption key to use for your cookies.
-	'cookie secret': process.env.KEYSTONE_COOKIE_SECRET,
-	'port': 80
+	'cookie secret': nconf.get('KEYSTONE_COOKIE_SECRET'),
+	'port': nconf.get('port')
 });
 
 // Load your project's Models

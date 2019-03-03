@@ -1,6 +1,29 @@
 # mprado-blog
 
-## Setup
+## Setup local
+
+### Iniciando o mongodb
+
+```
+sudo docker run --name mongodb_blog -p 27017:27017 -e "MONGO_INITDB_ROOT_USERNAME=root" -e "MONGO_INITDB_ROOT_PASSWORD=123456" -d mongo:3.6.2;
+```
+
+### Iniciando o blog
+
+```
+cd blog;
+npm install;
+npm run dev;
+```
+
+### Iniciando o keystone
+
+```
+cd keystone;
+npm run dev;
+```
+
+## Setup em produção
 
 ### Instalando o docker
 

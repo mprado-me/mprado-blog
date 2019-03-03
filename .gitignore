@@ -7,3 +7,4 @@ keystone/node_modules
 .env
 blog/node_modules
 blog/.next
+node_modules
