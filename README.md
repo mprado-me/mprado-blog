@@ -5,7 +5,7 @@
 ### Iniciando o strapi
 
 ```
-(sudo -s source .strapi_env && npm --prefix strapi-app run start) || (sudo npm --prefix strapi-app install && sudo -s source .strapi_env && npm --prefix strapi-app run start);
+(sudo -s source .strapi_env && npm --prefix strapi-app run start || (sudo npm --prefix strapi-app install && sudo -s source .strapi_env && npm --prefix strapi-app run start);
 ```
 
 ### Iniciando o blog (front-end)
@@ -76,31 +76,19 @@ sudo ./bash_scripts/init_letsencrypt.sh 0 marco.pdsv@gmail.com mprado.me,www.mpr
 
 ```
 cd ~/mprado-blog;
+sudo npm --prefix strapi-app install;
+sudo npm --prefix blog-app run build || (sudo npm --prefix blog-app install && sudo npm --prefix blog-app run build);
 sudo docker-compose up -d;
 ```
 
-###ssh -i "~/.ssh/mprado_blog_key.pem" ubuntu@ec2-54-234-143-167.compute-1.amazonaws.com;
-cd ~/mprado-blog;
-sudo docker-compose down;
-git pull origin master;
-sudo npm --prefix blog-app run build || (sudo npm --prefix blog-app install && sudo npm --prefix blog-app run build);
-sudo docker-compose up -d;
+###
 
-```ssh -i "~/.ssh/mprado_blog_key.pem" ubuntu@ec2-54-234-143-167.compute-1.amazonaws.com;
-cd ~/mprado-blog;
-sudo docker-compose down;
-git pull origin master;
-sudo npm --prefix blog-app run build || (sudo npm --prefix blog-app install && sudo npm --prefix blog-app run build);
-sudo docker-compose up -d;
+```
 ssh -i "~/.ssh/mprado_blog_key.pem" ubuntu@ec2-54-234-143-167.compute-1.amazonaws.com;
-cd ~/mprado-blog;ssh -i "~/.ssh/mprado_blog_key.pem" ubuntu@ec2-54-234-143-167.compute-1.amazonaws.com;
 cd ~/mprado-blog;
 sudo docker-compose down;
 git pull origin master;
-sudo npm --prefix blog-app run build || (sudo npm --prefix blog-app install && sudo npm --prefix blog-app run build);
-sudo docker-compose up -d;
-sudo docker-compose down;
-git pull origin master;
+sudo npm --prefix strapi-app install;
 sudo npm --prefix blog-app run build || (sudo npm --prefix blog-app install && sudo npm --prefix blog-app run build);
 sudo docker-compose up -d;
 ```
