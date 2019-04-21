@@ -93,6 +93,5 @@ cd ~/mprado-blog;
 sudo docker-compose down;
 git pull origin master;
 sudo npm --prefix blog run build || (sudo npm --prefix blog install && sudo npm --prefix blog run build);
-sudo docker-compose down;
 sudo docker-compose up -d;
 ```
