@@ -20,7 +20,13 @@
 ./bash_scripts/remove_local_containers.sh;
 ```
 
-## Setup em produção
+## Setup em produção (Ubuntu 16.04)
+
+### Conectar na VM
+
+```
+ssh -i "~/.ssh/mprado_blog_key.pem" ubuntu@ec2-54-234-143-167.compute-1.amazonaws.com;
+```
 
 ### Instalando o docker
 
@@ -43,10 +49,50 @@ sudo chmod +x /usr/local/bin/docker-compose;
 docker-compose --version;
 ```
 
-### Gerando o certificado ssl
-
-Alterar o arquivo do nginx para gerar o certificado ssl
+### Instalação do nodejs 10.x.x
 
 ```
-./init-letsencrypt.sh 0 marco.pdsv@gmail.com mprado.me,www.mprado.me,stra;
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -;
+sudo apt install nodejs;
+```
+
+### Clonando o repositório
+
+```
+git clone https://github.com/marcoprado17/mprado-blog.git;
+```
+
+### Criando e preechendo as variáveis de ambiente
+
+```
+cd ~/mprado-blog;
+sudo nano .mongo_env;
+sudo nano .strapi_env;
+```
+
+### Gerando o certificado ssl
+
+Alterar o arquivo do nginx para gerar o certificado ssl. Não esquecer de alterar o arquivo após a geração do certificado ssl
+
+```
+sudo ./bash_scripts/init_letsencrypt.sh 0 marco.pdsv@gmail.com mprado.me,www.mprado.me,strapi.mprado.me;
+```
+
+### Iniciando a aplicação
+
+```
+cd ~/mprado-blog;
+sudo docker-compose up -d;
+```
+
+### Atualizando o código
+
+```
+ssh -i "~/.ssh/mprado_blog_key.pem" ubuntu@ec2-54-234-143-167.compute-1.amazonaws.com;
+cd ~/mprado-blog;
+sudo docker-compose down;
+git pull origin master;
+sudo npm --prefix blog run build || (sudo npm --prefix blog install && sudo npm --prefix blog run build);
+sudo docker-compose down;
+sudo docker-compose up -d;
 ```
