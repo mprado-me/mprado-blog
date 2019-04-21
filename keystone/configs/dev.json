@@ -1,9 +1,0 @@
-{
-    "port": 8080,
-    "mongoHost": "localhost",
-    "MONGO_INITDB_ROOT_USERNAME": "root",
-    "MONGO_INITDB_ROOT_PASSWORD": "123456",
-    "KEYSTONE_ADMIN_EMAIL": "admin@gmail.com",
-    "KEYSTONE_ADMIN_PASSWORD": "123456",
-    "KEYSTONE_COOKIE_SECRET": "123456"
-}
