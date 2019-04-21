@@ -2,22 +2,16 @@
 
 ## Setup local
 
-### Iniciando o mongodb, strapi e o blog (front-end)
+### Iniciando o strapi
 
 ```
-./bash_scripts/start_local.sh;
+(sudo -s source .strapi_env && npm --prefix strapi-app run start) || (sudo npm --prefix strapi-app install && sudo -s source .strapi_env && npm --prefix strapi-app run start);
 ```
 
-### Parando o mongodb, strapi e o blog (front-end)
+### Iniciando o blog (front-end)
 
 ```
-./bash_scripts/stop_local.sh;
-```
-
-### Removendo os containers mongodb e strapi
-
-```
-./bash_scripts/remove_local_containers.sh;
+sudo npm --prefix blog-app run start || (sudo npm --prefix blog-app install && sudo npm --prefix blog-app run start)
 ```
 
 ## Setup em produção (Ubuntu 16.04)
@@ -85,13 +79,28 @@ cd ~/mprado-blog;
 sudo docker-compose up -d;
 ```
 
-### Atualizando o código
-
-```
-ssh -i "~/.ssh/mprado_blog_key.pem" ubuntu@ec2-54-234-143-167.compute-1.amazonaws.com;
+###ssh -i "~/.ssh/mprado_blog_key.pem" ubuntu@ec2-54-234-143-167.compute-1.amazonaws.com;
 cd ~/mprado-blog;
 sudo docker-compose down;
 git pull origin master;
-sudo npm --prefix blog run build || (sudo npm --prefix blog install && sudo npm --prefix blog run build);
+sudo npm --prefix blog-app run build || (sudo npm --prefix blog-app install && sudo npm --prefix blog-app run build);
+sudo docker-compose up -d;
+
+```ssh -i "~/.ssh/mprado_blog_key.pem" ubuntu@ec2-54-234-143-167.compute-1.amazonaws.com;
+cd ~/mprado-blog;
+sudo docker-compose down;
+git pull origin master;
+sudo npm --prefix blog-app run build || (sudo npm --prefix blog-app install && sudo npm --prefix blog-app run build);
+sudo docker-compose up -d;
+ssh -i "~/.ssh/mprado_blog_key.pem" ubuntu@ec2-54-234-143-167.compute-1.amazonaws.com;
+cd ~/mprado-blog;ssh -i "~/.ssh/mprado_blog_key.pem" ubuntu@ec2-54-234-143-167.compute-1.amazonaws.com;
+cd ~/mprado-blog;
+sudo docker-compose down;
+git pull origin master;
+sudo npm --prefix blog-app run build || (sudo npm --prefix blog-app install && sudo npm --prefix blog-app run build);
+sudo docker-compose up -d;
+sudo docker-compose down;
+git pull origin master;
+sudo npm --prefix blog-app run build || (sudo npm --prefix blog-app install && sudo npm --prefix blog-app run build);
 sudo docker-compose up -d;
 ```
