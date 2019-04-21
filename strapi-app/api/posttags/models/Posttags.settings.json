@@ -1,0 +1,20 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "posttags",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "tag": {
+      "maxLength": 100,
+      "required": true,
+      "unique": true,
+      "minLength": 1,
+      "type": "string"
+    }
+  }
+}
