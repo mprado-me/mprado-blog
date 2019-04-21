@@ -2,25 +2,22 @@
 
 ## Setup local
 
-### Iniciando o mongodb
+### Iniciando o mongodb, strapi e o blog (front-end)
 
 ```
-sudo docker run --name mongodb_blog -p 27017:27017 -e "MONGO_INITDB_ROOT_USERNAME=root" -e "MONGO_INITDB_ROOT_PASSWORD=123456" -d mongo:3.6.2;
+./bash_scripts/start_local.sh;
 ```
 
-### Iniciando o blog
+### Parando o mongodb, strapi e o blog (front-end)
 
 ```
-cd blog;
-npm install;
-npm run dev;
+./bash_scripts/stop_local.sh;
 ```
 
-### Iniciando o keystone
+### Removendo os containers mongodb e strapi
 
 ```
-cd keystone;
-npm run dev;
+./bash_scripts/remove_local_containers.sh;
 ```
 
 ## Setup em produção
@@ -48,8 +45,8 @@ docker-compose --version;
 
 ### Gerando o certificado ssl
 
-Não esquecer de remover o redirect de http -> https
+Alterar o arquivo do nginx para gerar o certificado ssl
 
 ```
-./init-letsencrypt.sh 0 marco.pdsv@gmail.com mprado.me,www.mprado.me;
+./init-letsencrypt.sh 0 marco.pdsv@gmail.com mprado.me,www.mprado.me,stra;
 ```
