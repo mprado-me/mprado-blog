@@ -32,8 +32,8 @@ services:
     image: mongo:3.6.2
     env_file:
       - .mongo_env
-    # ports:
-    #   - "27017:27017"
+    ports:
+      - "27017:27017"
     volumes:
       - ./data/mongo:/data/db
     restart: always
