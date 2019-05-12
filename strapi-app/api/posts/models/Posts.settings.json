@@ -1,0 +1,35 @@
+{
+  "connection": "default",
+  "collectionName": "posts",
+  "info": {
+    "name": "posts",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "required": true,
+      "type": "string"
+    },
+    "summary": {
+      "required": true,
+      "type": "text"
+    },
+    "mainImage": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload"
+    },
+    "markdownContent": {
+      "required": true,
+      "type": "text"
+    },
+    "authors": {
+      "collection": "authors",
+      "via": "posts",
+      "dominant": true
+    }
+  }
+}

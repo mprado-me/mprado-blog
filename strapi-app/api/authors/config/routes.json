@@ -2,48 +2,48 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/posttags",
-      "handler": "Posttags.find",
+      "path": "/authors",
+      "handler": "Authors.find",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/posttags/count",
-      "handler": "Posttags.count",
+      "path": "/authors/count",
+      "handler": "Authors.count",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/posttags/:_id",
-      "handler": "Posttags.findOne",
+      "path": "/authors/:_id",
+      "handler": "Authors.findOne",
       "config": {
         "policies": []
       }
     },
     {
       "method": "POST",
-      "path": "/posttags",
-      "handler": "Posttags.create",
+      "path": "/authors",
+      "handler": "Authors.create",
       "config": {
         "policies": []
       }
     },
     {
       "method": "PUT",
-      "path": "/posttags/:_id",
-      "handler": "Posttags.update",
+      "path": "/authors/:_id",
+      "handler": "Authors.update",
       "config": {
         "policies": []
       }
     },
     {
       "method": "DELETE",
-      "path": "/posttags/:_id",
-      "handler": "Posttags.destroy",
+      "path": "/authors/:_id",
+      "handler": "Authors.destroy",
       "config": {
         "policies": []
       }
