@@ -8,3 +8,4 @@ keystone/node_modules
 blog/node_modules
 blog/.next
 node_modules
+.idea/**
