@@ -22,17 +22,6 @@ sudo npm --prefix blog-app run start || (sudo npm --prefix blog-app install && s
 ssh -i "~/.ssh/mprado_blog_key.pem" ubuntu@ec2-54-234-143-167.compute-1.amazonaws.com;
 ```
 
-<<<<<<< HEAD
-## Setup em produção (Ubuntu)
-
-### Conectando na vm
-
-```
-ssh -i "~/.ssh/mprado_blog_key.pem" ubuntu@ec2-54-234-143-167.compute-1.amazonaws.com;
-```
-
-=======
->>>>>>> 4ff200287eeed5c305b383810c7581e5b1de331d
 ### Instalando o docker
 
 ```
@@ -92,22 +81,9 @@ sudo npm --prefix blog-app run build || (sudo npm --prefix blog-app install && s
 sudo docker-compose up -d;
 ```
 
-###
-
-```
-ssh -i "~/.ssh/mprado_blog_key.pem" ubuntu@ec2-54-234-143-167.compute-1.amazonaws.com;
-cd ~/mprado-blog;
-sudo docker-compose down;
-git pull origin master;
-sudo npm --prefix strapi-app install;
-sudo npm --prefix blog-app run build || (sudo npm --prefix blog-app install && sudo npm --prefix blog-app run build);
-sudo docker-compose up -d;
-```
-
 ## Atualização do código em produção
 
-### Conectando na vm
-
 ```
 ssh -i "~/.ssh/mprado_blog_key.pem" ubuntu@ec2-54-234-143-167.compute-1.amazonaws.com;
+sudo /home/ubuntu/mprado-blog/bash_scripts/update_server.sh;
 ```
