@@ -9,11 +9,11 @@
     "timestamps": true
   },
   "attributes": {
-    "title": {
+    "title_pt_BR": {
       "required": true,
       "type": "string"
     },
-    "summary": {
+    "summary_pt_BR": {
       "required": true,
       "type": "text"
     },
@@ -22,14 +22,23 @@
       "via": "related",
       "plugin": "upload"
     },
-    "markdownContent": {
+    "markdownContent_pt_BR": {
       "required": true,
       "type": "text"
     },
     "authors": {
       "collection": "authors",
-      "via": "posts",
-      "dominant": true
+      "dominant": true,
+      "via": "posts"
+    },
+    "mainTag": {
+      "model": "posttags",
+      "via": "mainPosts"
+    },
+    "tags": {
+      "collection": "posttags",
+      "dominant": true,
+      "via": "posts"
     }
   }
 }

@@ -1,18 +1,18 @@
 {
   "paths": {
-    "/authors": {
+    "/socialnetworks": {
       "get": {
         "deprecated": false,
-        "description": "Find all the authors's records",
+        "description": "Find all the socialnetworks's records",
         "responses": {
           "200": {
-            "description": "Retrieve authors document(s)",
+            "description": "Retrieve socialnetworks document(s)",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Authors"
+                    "$ref": "#/components/schemas/Socialnetworks"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Authors"
+          "Socialnetworks"
         ],
         "parameters": [
           {
@@ -188,14 +188,14 @@
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new authors record",
+        "description": "Create a new socialnetworks record",
         "responses": {
           "200": {
-            "description": "Retrieve authors document(s)",
+            "description": "Retrieve socialnetworks document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Authors"
+                  "$ref": "#/components/schemas/Socialnetworks"
                 }
               }
             }
@@ -233,7 +233,7 @@
         },
         "summary": "",
         "tags": [
-          "Authors"
+          "Socialnetworks"
         ],
         "requestBody": {
           "description": "",
@@ -241,20 +241,20 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewAuthors"
+                "$ref": "#/components/schemas/NewSocialnetworks"
               }
             }
           }
         }
       }
     },
-    "/authors/count": {
+    "/socialnetworks/count": {
       "get": {
         "deprecated": false,
-        "description": "Retrieve the numver of authors documents",
+        "description": "Retrieve the numver of socialnetworks documents",
         "responses": {
           "200": {
-            "description": "Retrieve authors document(s)",
+            "description": "Retrieve socialnetworks document(s)",
             "content": {
               "application/json": {
                 "schema": {
@@ -300,22 +300,22 @@
         },
         "summary": "",
         "tags": [
-          "Authors"
+          "Socialnetworks"
         ],
         "parameters": []
       }
     },
-    "/authors/{_id}": {
+    "/socialnetworks/{_id}": {
       "get": {
         "deprecated": false,
-        "description": "Find one authors record",
+        "description": "Find one socialnetworks record",
         "responses": {
           "200": {
-            "description": "Retrieve authors document(s)",
+            "description": "Retrieve socialnetworks document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Authors"
+                  "$ref": "#/components/schemas/Socialnetworks"
                 }
               }
             }
@@ -353,7 +353,7 @@
         },
         "summary": "",
         "tags": [
-          "Authors"
+          "Socialnetworks"
         ],
         "parameters": [
           {
@@ -370,14 +370,14 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a single authors record",
+        "description": "Update a single socialnetworks record",
         "responses": {
           "200": {
-            "description": "Retrieve authors document(s)",
+            "description": "Retrieve socialnetworks document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Authors"
+                  "$ref": "#/components/schemas/Socialnetworks"
                 }
               }
             }
@@ -415,7 +415,7 @@
         },
         "summary": "",
         "tags": [
-          "Authors"
+          "Socialnetworks"
         ],
         "requestBody": {
           "description": "",
@@ -423,7 +423,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewAuthors"
+                "$ref": "#/components/schemas/NewSocialnetworks"
               }
             }
           }
@@ -443,10 +443,10 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a single authors record",
+        "description": "Delete a single socialnetworks record",
         "responses": {
           "200": {
-            "description": "deletes a single authors based on the ID supplied",
+            "description": "deletes a single socialnetworks based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -489,7 +489,7 @@
         },
         "summary": "",
         "tags": [
-          "Authors"
+          "Socialnetworks"
         ],
         "parameters": [
           {
@@ -508,10 +508,10 @@
   },
   "components": {
     "schemas": {
-      "Authors": {
+      "Socialnetworks": {
         "required": [
           "id",
-          "name"
+          "url"
         ],
         "properties": {
           "id": {
@@ -520,13 +520,10 @@
           "name": {
             "type": "string"
           },
-          "email": {
+          "url": {
             "type": "string"
           },
-          "description_pt_BR": {
-            "type": "string"
-          },
-          "picture": {
+          "icon": {
             "required": [
               "id",
               "name",
@@ -572,70 +569,24 @@
               }
             }
           },
-          "posts": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "title_pt_BR",
-                "summary_pt_BR",
-                "markdownContent_pt_BR"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "title_pt_BR": {
-                  "type": "string"
-                },
-                "summary_pt_BR": {
-                  "type": "string"
-                },
-                "mainImage": {
-                  "type": "string"
-                },
-                "markdownContent_pt_BR": {
-                  "type": "string"
-                },
-                "authors": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "mainTag": {
-                  "type": "string"
-                },
-                "tags": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+          "semanticUiClass": {
+            "type": "string"
           }
         }
       },
-      "NewAuthors": {
+      "NewSocialnetworks": {
         "required": [
-          "name"
+          "url"
         ],
         "properties": {
           "name": {
             "type": "string"
           },
-          "email": {
+          "url": {
             "type": "string"
           },
-          "description_pt_BR": {
+          "semanticUiClass": {
             "type": "string"
-          },
-          "posts": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
           }
         }
       }
@@ -643,7 +594,7 @@
   },
   "tags": [
     {
-      "name": "Authors"
+      "name": "Socialnetworks"
     }
   ]
 }

@@ -511,18 +511,18 @@
       "Posts": {
         "required": [
           "id",
-          "title",
-          "summary",
-          "markdownContent"
+          "title_pt_BR",
+          "summary_pt_BR",
+          "markdownContent_pt_BR"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
-          "title": {
+          "title_pt_BR": {
             "type": "string"
           },
-          "summary": {
+          "summary_pt_BR": {
             "type": "string"
           },
           "mainImage": {
@@ -571,7 +571,7 @@
               }
             }
           },
-          "markdownContent": {
+          "markdownContent_pt_BR": {
             "type": "string"
           },
           "authors": {
@@ -591,11 +591,66 @@
                 "email": {
                   "type": "string"
                 },
-                "description": {
+                "description_pt_BR": {
                   "type": "string"
                 },
                 "picture": {
                   "type": "string"
+                },
+                "posts": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "mainTag": {
+            "required": [
+              "id",
+              "tag_pt_BR"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "tag_pt_BR": {
+                "type": "string"
+              },
+              "mainPosts": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "posts": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "tag_pt_BR"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "tag_pt_BR": {
+                  "type": "string"
+                },
+                "mainPosts": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 },
                 "posts": {
                   "type": "array",
@@ -610,21 +665,30 @@
       },
       "NewPosts": {
         "required": [
-          "title",
-          "summary",
-          "markdownContent"
+          "title_pt_BR",
+          "summary_pt_BR",
+          "markdownContent_pt_BR"
         ],
         "properties": {
-          "title": {
+          "title_pt_BR": {
             "type": "string"
           },
-          "summary": {
+          "summary_pt_BR": {
             "type": "string"
           },
-          "markdownContent": {
+          "markdownContent_pt_BR": {
             "type": "string"
           },
           "authors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mainTag": {
+            "type": "string"
+          },
+          "tags": {
             "type": "array",
             "items": {
               "type": "string"

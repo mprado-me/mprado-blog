@@ -1,6 +1,6 @@
 {
   "connection": "default",
-  "collectionName": "",
+  "collectionName": "authors",
   "info": {
     "name": "authors",
     "description": ""
@@ -14,9 +14,10 @@
       "required": true
     },
     "email": {
-      "type": "string"
+      "type": "string",
+      "unique": true
     },
-    "description": {
+    "description_pt_BR": {
       "type": "text"
     },
     "picture": {

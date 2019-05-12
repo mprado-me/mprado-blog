@@ -1,6 +1,6 @@
 {
   "connection": "default",
-  "collectionName": "",
+  "collectionName": "posttags",
   "info": {
     "name": "posttags",
     "description": ""
@@ -9,12 +9,20 @@
     "timestamps": true
   },
   "attributes": {
-    "tag": {
+    "tag_pt_BR": {
       "maxLength": 100,
       "required": true,
       "unique": true,
       "minLength": 1,
       "type": "string"
+    },
+    "mainPosts": {
+      "collection": "posts",
+      "via": "mainTag"
+    },
+    "posts": {
+      "collection": "posts",
+      "via": "tags"
     }
   }
 }

@@ -1,0 +1,28 @@
+{
+  "connection": "default",
+  "collectionName": "socialnetworks",
+  "info": {
+    "name": "socialnetworks",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "icon": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload"
+    },
+    "semanticUiClass": {
+      "type": "string"
+    }
+  }
+}
