@@ -1,26 +1,25 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Router, Route, Switch } from 'react-router-dom';
+import PostsLayout from './layouts/PostsLayout';
+import PostLayout from './layouts/PostLayout';
+import TagsLayout from './layouts/TagsLayout';
+import NotFoundLayout from './layouts/NotFoundLayout';
+import history from './history';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+    <div className="ui container">
+        <Router history={history}>
+            <Switch>
+                <Route path="/" exact component={PostsLayout} />
+                <Route path="/posts" exact component={PostsLayout} />
+                <Route path="/posts/:id" exact component={PostLayout} />
+                <Route path="/tags" exact component={TagsLayout} />
+                <Route path="*" component={NotFoundLayout} />
+            </Switch>
+        </Router>
+    </div>
     );
   }
 }
