@@ -7,50 +7,52 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    volumes:
+      - ./data/nginx:/etc/nginx/conf.d
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
+      - ./blog-app/build:/var/www/html
     logging:
       driver: json-file
       options:
         max-size: "100m"
         max-file: "2"
-    volumes:
-      - ./data/nginx:/etc/nginx/conf.d
-      - ./data/certbot/conf:/etc/letsencrypt
-      - ./data/certbot/www:/var/www/certbot
-      - ./data/public:/var/www/html
   certbot:
     image: certbot/certbot
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+    volumes:
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
     logging:
       driver: json-file
       options:
         max-size: "20m"
         max-file: "2"
-    volumes:
-      - ./data/certbot/conf:/etc/letsencrypt
-      - ./data/certbot/www:/var/www/certbot
   mongo:
     image: mongo:3.6.2
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
-      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
-    # ports:
-    #   - "27017:27017"
+    env_file:
+      - .mongo_env
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data/mongo:/data/db
+    restart: always
     logging:
       driver: json-file
       options:
         max-size: "100m"
         max-file: "2"
+  strapi:
+    image: strapi/strapi
+    env_file:
+      - .strapi_env
+    # ports:
+    #   - 1337:1337
     volumes:
-      - ./data/mongo:/data/db
-  keystone:
-    build: ./keystone
+      - ./strapi-app:/usr/src/api/strapi-app
+    depends_on:
+      - mongo
     restart: always
-    environment:
-      - KEYSTONE_ADMIN_EMAIL=${KEYSTONE_ADMIN_EMAIL}
-      - KEYSTONE_ADMIN_PASSWORD=${KEYSTONE_ADMIN_PASSWORD}
-      - KEYSTONE_COOKIE_SECRET=${KEYSTONE_COOKIE_SECRET}
-      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
-      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
     logging:
       driver: json-file
       options:

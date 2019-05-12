@@ -2,27 +2,27 @@
 
 ## Setup local
 
-### Iniciando o mongodb
+### Iniciando o strapi
 
 ```
-sudo docker run --name mongodb_blog -p 27017:27017 -e "MONGO_INITDB_ROOT_USERNAME=root" -e "MONGO_INITDB_ROOT_PASSWORD=123456" -d mongo:3.6.2;
+(sudo -s source .strapi_env && npm --prefix strapi-app run start || (sudo npm --prefix strapi-app install && sudo -s source .strapi_env && npm --prefix strapi-app run start);
 ```
 
-### Iniciando o blog
+### Iniciando o blog (front-end)
 
 ```
-cd blog;
-npm install;
-npm run dev;
+sudo npm --prefix blog-app run start || (sudo npm --prefix blog-app install && sudo npm --prefix blog-app run start)
 ```
 
-### Iniciando o keystone
+## Setup em produção (Ubuntu 16.04)
+
+### Conectar na VM
 
 ```
-cd keystone;
-npm run dev;
+ssh -i "~/.ssh/mprado_blog_key.pem" ubuntu@ec2-54-234-143-167.compute-1.amazonaws.com;
 ```
 
+<<<<<<< HEAD
 ## Setup em produção (Ubuntu)
 
 ### Conectando na vm
@@ -31,6 +31,8 @@ npm run dev;
 ssh -i "~/.ssh/mprado_blog_key.pem" ubuntu@ec2-54-234-143-167.compute-1.amazonaws.com;
 ```
 
+=======
+>>>>>>> 4ff200287eeed5c305b383810c7581e5b1de331d
 ### Instalando o docker
 
 ```
@@ -52,12 +54,54 @@ sudo chmod +x /usr/local/bin/docker-compose;
 docker-compose --version;
 ```
 
-### Gerando o certificado ssl
-
-Não esquecer de remover o redirect de http -> https
+### Instalação do nodejs 10.x.x
 
 ```
-./init-letsencrypt.sh 0 marco.pdsv@gmail.com mprado.me,www.mprado.me;
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -;
+sudo apt install nodejs;
+```
+
+### Clonando o repositório
+
+```
+git clone https://github.com/marcoprado17/mprado-blog.git;
+```
+
+### Criando e preechendo as variáveis de ambiente
+
+```
+cd ~/mprado-blog;
+sudo nano .mongo_env;
+sudo nano .strapi_env;
+```
+
+### Gerando o certificado ssl
+
+Alterar o arquivo do nginx para gerar o certificado ssl. Não esquecer de alterar o arquivo após a geração do certificado ssl
+
+```
+sudo ./bash_scripts/init_letsencrypt.sh 0 marco.pdsv@gmail.com mprado.me,www.mprado.me,strapi.mprado.me;
+```
+
+### Iniciando a aplicação
+
+```
+cd ~/mprado-blog;
+sudo npm --prefix strapi-app install;
+sudo npm --prefix blog-app run build || (sudo npm --prefix blog-app install && sudo npm --prefix blog-app run build);
+sudo docker-compose up -d;
+```
+
+###
+
+```
+ssh -i "~/.ssh/mprado_blog_key.pem" ubuntu@ec2-54-234-143-167.compute-1.amazonaws.com;
+cd ~/mprado-blog;
+sudo docker-compose down;
+git pull origin master;
+sudo npm --prefix strapi-app install;
+sudo npm --prefix blog-app run build || (sudo npm --prefix blog-app install && sudo npm --prefix blog-app run build);
+sudo docker-compose up -d;
 ```
 
 ## Atualização do código em produção
