@@ -23,7 +23,13 @@ cd keystone;
 npm run dev;
 ```
 
-## Setup em produção
+## Setup em produção (Ubuntu)
+
+### Conectando na vm
+
+```
+ssh -i "~/.ssh/mprado_blog_key.pem" ubuntu@ec2-54-234-143-167.compute-1.amazonaws.com;
+```
 
 ### Instalando o docker
 
@@ -52,4 +58,12 @@ Não esquecer de remover o redirect de http -> https
 
 ```
 ./init-letsencrypt.sh 0 marco.pdsv@gmail.com mprado.me,www.mprado.me;
+```
+
+## Atualização do código em produção
+
+### Conectando na vm
+
+```
+ssh -i "~/.ssh/mprado_blog_key.pem" ubuntu@ec2-54-234-143-167.compute-1.amazonaws.com;
 ```
