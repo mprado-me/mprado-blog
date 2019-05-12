@@ -1,6 +1,7 @@
 data/certbot/**
 !data/certbot/.gitkeep
-data/mongo
+data/mongo/**
+!data/mongo/.gitkeep
 .mongo_env
 .strapi_env
 blog/node_modules
