@@ -5,11 +5,12 @@ import PostLayout from './layouts/PostLayout';
 import TagsLayout from './layouts/TagsLayout';
 import NotFoundLayout from './layouts/NotFoundLayout';
 import history from './history';
+import 'semantic-ui-css/semantic.min.css'
 
 class App extends Component {
   render() {
     return (
-    <div className="ui container">
+    <div>
         <Router history={history}>
             <Switch>
                 <Route path="/" exact component={PostsLayout} />
