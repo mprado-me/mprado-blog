@@ -23,6 +23,9 @@
     "posts": {
       "collection": "posts",
       "via": "tags"
+    },
+    "tag": {
+      "type": "string"
     }
   }
 }

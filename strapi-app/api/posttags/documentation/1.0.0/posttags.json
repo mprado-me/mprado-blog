@@ -607,6 +607,9 @@
                 }
               }
             }
+          },
+          "tag": {
+            "type": "string"
           }
         }
       },
@@ -631,6 +634,9 @@
             "items": {
               "type": "string"
             }
+          },
+          "tag": {
+            "type": "string"
           }
         }
       }
