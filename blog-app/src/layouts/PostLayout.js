@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import BaseLayout from './BaseLayout';
+import BaseLayout from './base_layout';
 import {updateActiveMenuItem} from "../components/header/actions";
 import {POSTS} from "../components/header/menu_items";
 
@@ -11,7 +11,7 @@ class PostLayout extends Component {
 
     render() {
         return (
-            <BaseLayout>
+            <BaseLayout location={this.props.location}>
                 <p>Post Layout</p>
             </BaseLayout>
         );

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import BaseLayout from './BaseLayout';
+import BaseLayout from './base_layout';
 import {updateActiveMenuItem} from "../components/header/actions";
 import {TAGS} from "../components/header/menu_items";
 
@@ -11,7 +11,7 @@ class TagsLayout extends Component {
 
     render() {
         return (
-            <BaseLayout>
+            <BaseLayout location={this.props.location}>
                 <p>Tags Layout</p>
             </BaseLayout>
         );
