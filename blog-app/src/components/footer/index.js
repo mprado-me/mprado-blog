@@ -23,7 +23,6 @@ class Footer extends Component {
     render = () => {
         return (
             <Segment.Group style={{border: 0}}>
-                
                 <Segment inverted style={{ borderRadius: 0}}>
                     <Container>
                         <Grid columns={2} divided>

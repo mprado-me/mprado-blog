@@ -85,5 +85,9 @@ sudo docker-compose up -d;
 
 ```
 ssh -i "~/.ssh/mprado_blog_key.pem" ubuntu@ec2-54-234-143-167.compute-1.amazonaws.com;
-sudo /home/ubuntu/mprado-blog/bash_scripts/update_server.sh;
+/home/ubuntu/mprado-blog/bash_scripts/update_server.sh;
+```
+
+### Iniciando o strapi
+
 ```
