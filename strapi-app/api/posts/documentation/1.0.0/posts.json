@@ -605,67 +605,6 @@
                 }
               }
             }
-          },
-          "mainTag": {
-            "required": [
-              "id",
-              "tag_pt_BR"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "tag_pt_BR": {
-                "type": "string"
-              },
-              "mainPosts": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "posts": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "tag": {
-                "type": "string"
-              }
-            }
-          },
-          "tags": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "tag_pt_BR"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "tag_pt_BR": {
-                  "type": "string"
-                },
-                "mainPosts": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "posts": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "tag": {
-                  "type": "string"
-                }
-              }
-            }
           }
         }
       },
@@ -686,15 +625,6 @@
             "type": "string"
           },
           "authors": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "mainTag": {
-            "type": "string"
-          },
-          "tags": {
             "type": "array",
             "items": {
               "type": "string"

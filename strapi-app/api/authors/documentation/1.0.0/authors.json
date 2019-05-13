@@ -602,15 +602,6 @@
                   "items": {
                     "type": "string"
                   }
-                },
-                "mainTag": {
-                  "type": "string"
-                },
-                "tags": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
                 }
               }
             }

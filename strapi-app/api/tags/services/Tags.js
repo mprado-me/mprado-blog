@@ -1,9 +1,9 @@
 'use strict';
 
-/* global Posttags */
+/* global Tags */
 
 /**
- * Posttags.js service
+ * Tags.js service
  *
  * @description: A set of functions similar to controller's actions to avoid code duplication.
  */
@@ -15,44 +15,44 @@ const { convertRestQueryParams, buildQuery } = require('strapi-utils');
 module.exports = {
 
   /**
-   * Promise to fetch all posttags.
+   * Promise to fetch all tags.
    *
    * @return {Promise}
    */
 
   fetchAll: (params, populate) => {
     const filters = convertRestQueryParams(params);
-    const populateOpt = populate || Posttags.associations
+    const populateOpt = populate || Tags.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
 
     return buildQuery({
-      model: Posttags,
+      model: Tags,
       filters,
       populate: populateOpt,
     });
   },
 
   /**
-   * Promise to fetch a/an posttags.
+   * Promise to fetch a/an tags.
    *
    * @return {Promise}
    */
 
   fetch: (params) => {
     // Select field to populate.
-    const populate = Posttags.associations
+    const populate = Tags.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
       .join(' ');
 
-    return Posttags
-      .findOne(_.pick(params, _.keys(Posttags.schema.paths)))
+    return Tags
+      .findOne(_.pick(params, _.keys(Tags.schema.paths)))
       .populate(populate);
   },
 
   /**
-   * Promise to count posttags.
+   * Promise to count tags.
    *
    * @return {Promise}
    */
@@ -61,64 +61,64 @@ module.exports = {
     const filters = convertRestQueryParams(params);
 
     return buildQuery({
-      model: Posttags,
+      model: Tags,
       filters: { where: filters.where },
     })
       .count()
   },
 
   /**
-   * Promise to add a/an posttags.
+   * Promise to add a/an tags.
    *
    * @return {Promise}
    */
 
   add: async (values) => {
     // Extract values related to relational data.
-    const relations = _.pick(values, Posttags.associations.map(ast => ast.alias));
-    const data = _.omit(values, Posttags.associations.map(ast => ast.alias));
+    const relations = _.pick(values, Tags.associations.map(ast => ast.alias));
+    const data = _.omit(values, Tags.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = await Posttags.create(data);
+    const entry = await Tags.create(data);
 
     // Create relational data and return the entry.
-    return Posttags.updateRelations({ _id: entry.id, values: relations });
+    return Tags.updateRelations({ _id: entry.id, values: relations });
   },
 
   /**
-   * Promise to edit a/an posttags.
+   * Promise to edit a/an tags.
    *
    * @return {Promise}
    */
 
   edit: async (params, values) => {
     // Extract values related to relational data.
-    const relations = _.pick(values, Posttags.associations.map(a => a.alias));
-    const data = _.omit(values, Posttags.associations.map(a => a.alias));
+    const relations = _.pick(values, Tags.associations.map(a => a.alias));
+    const data = _.omit(values, Tags.associations.map(a => a.alias));
 
     // Update entry with no-relational data.
-    const entry = await Posttags.updateOne(params, data, { multi: true });
+    const entry = await Tags.updateOne(params, data, { multi: true });
 
     // Update relational data and return the entry.
-    return Posttags.updateRelations(Object.assign(params, { values: relations }));
+    return Tags.updateRelations(Object.assign(params, { values: relations }));
   },
 
   /**
-   * Promise to remove a/an posttags.
+   * Promise to remove a/an tags.
    *
    * @return {Promise}
    */
 
   remove: async params => {
     // Select field to populate.
-    const populate = Posttags.associations
+    const populate = Tags.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
       .join(' ');
 
     // Note: To get the full response of Mongo, use the `remove()` method
     // or add spent the parameter `{ passRawResult: true }` as second argument.
-    const data = await Posttags
+    const data = await Tags
       .findOneAndRemove(params, {})
       .populate(populate);
 
@@ -127,7 +127,7 @@ module.exports = {
     }
 
     await Promise.all(
-      Posttags.associations.map(async association => {
+      Tags.associations.map(async association => {
         if (!association.via || !data._id || association.dominant) {
           return true;
         }
@@ -148,22 +148,22 @@ module.exports = {
   },
 
   /**
-   * Promise to search a/an posttags.
+   * Promise to search a/an tags.
    *
    * @return {Promise}
    */
 
   search: async (params) => {
     // Convert `params` object to filters compatible with Mongo.
-    const filters = strapi.utils.models.convertParams('posttags', params);
+    const filters = strapi.utils.models.convertParams('tags', params);
     // Select field to populate.
-    const populate = Posttags.associations
+    const populate = Tags.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
       .join(' ');
 
-    const $or = Object.keys(Posttags.attributes).reduce((acc, curr) => {
-      switch (Posttags.attributes[curr].type) {
+    const $or = Object.keys(Tags.attributes).reduce((acc, curr) => {
+      switch (Tags.attributes[curr].type) {
         case 'integer':
         case 'float':
         case 'decimal':
@@ -187,7 +187,7 @@ module.exports = {
       }
     }, []);
 
-    return Posttags
+    return Tags
       .find({ $or })
       .sort(filters.sort)
       .skip(filters.start)
