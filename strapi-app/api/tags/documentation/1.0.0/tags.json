@@ -1,18 +1,18 @@
 {
   "paths": {
-    "/posttags": {
+    "/tags": {
       "get": {
         "deprecated": false,
-        "description": "Find all the posttags's records",
+        "description": "Find all the tags's records",
         "responses": {
           "200": {
-            "description": "Retrieve posttags document(s)",
+            "description": "Retrieve tags document(s)",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Posttags"
+                    "$ref": "#/components/schemas/Tags"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Posttags"
+          "Tags"
         ],
         "parameters": [
           {
@@ -188,14 +188,14 @@
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new posttags record",
+        "description": "Create a new tags record",
         "responses": {
           "200": {
-            "description": "Retrieve posttags document(s)",
+            "description": "Retrieve tags document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Posttags"
+                  "$ref": "#/components/schemas/Tags"
                 }
               }
             }
@@ -233,7 +233,7 @@
         },
         "summary": "",
         "tags": [
-          "Posttags"
+          "Tags"
         ],
         "requestBody": {
           "description": "",
@@ -241,20 +241,20 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPosttags"
+                "$ref": "#/components/schemas/NewTags"
               }
             }
           }
         }
       }
     },
-    "/posttags/count": {
+    "/tags/count": {
       "get": {
         "deprecated": false,
-        "description": "Retrieve the numver of posttags documents",
+        "description": "Retrieve the numver of tags documents",
         "responses": {
           "200": {
-            "description": "Retrieve posttags document(s)",
+            "description": "Retrieve tags document(s)",
             "content": {
               "application/json": {
                 "schema": {
@@ -300,22 +300,22 @@
         },
         "summary": "",
         "tags": [
-          "Posttags"
+          "Tags"
         ],
         "parameters": []
       }
     },
-    "/posttags/{_id}": {
+    "/tags/{_id}": {
       "get": {
         "deprecated": false,
-        "description": "Find one posttags record",
+        "description": "Find one tags record",
         "responses": {
           "200": {
-            "description": "Retrieve posttags document(s)",
+            "description": "Retrieve tags document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Posttags"
+                  "$ref": "#/components/schemas/Tags"
                 }
               }
             }
@@ -353,7 +353,7 @@
         },
         "summary": "",
         "tags": [
-          "Posttags"
+          "Tags"
         ],
         "parameters": [
           {
@@ -370,14 +370,14 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a single posttags record",
+        "description": "Update a single tags record",
         "responses": {
           "200": {
-            "description": "Retrieve posttags document(s)",
+            "description": "Retrieve tags document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Posttags"
+                  "$ref": "#/components/schemas/Tags"
                 }
               }
             }
@@ -415,7 +415,7 @@
         },
         "summary": "",
         "tags": [
-          "Posttags"
+          "Tags"
         ],
         "requestBody": {
           "description": "",
@@ -423,7 +423,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPosttags"
+                "$ref": "#/components/schemas/NewTags"
               }
             }
           }
@@ -443,10 +443,10 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a single posttags record",
+        "description": "Delete a single tags record",
         "responses": {
           "200": {
-            "description": "deletes a single posttags based on the ID supplied",
+            "description": "deletes a single tags based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -489,7 +489,7 @@
         },
         "summary": "",
         "tags": [
-          "Posttags"
+          "Tags"
         ],
         "parameters": [
           {
@@ -508,134 +508,32 @@
   },
   "components": {
     "schemas": {
-      "Posttags": {
+      "Tags": {
         "required": [
           "id",
-          "tag_pt_BR"
+          "key"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
-          "tag_pt_BR": {
-            "type": "string",
-            "maxLength": 100,
-            "minLength": 1
+          "key": {
+            "type": "string"
           },
-          "mainPosts": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "title_pt_BR",
-                "summary_pt_BR",
-                "markdownContent_pt_BR"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "title_pt_BR": {
-                  "type": "string"
-                },
-                "summary_pt_BR": {
-                  "type": "string"
-                },
-                "mainImage": {
-                  "type": "string"
-                },
-                "markdownContent_pt_BR": {
-                  "type": "string"
-                },
-                "authors": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "mainTag": {
-                  "type": "string"
-                },
-                "tags": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          },
-          "posts": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "title_pt_BR",
-                "summary_pt_BR",
-                "markdownContent_pt_BR"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "title_pt_BR": {
-                  "type": "string"
-                },
-                "summary_pt_BR": {
-                  "type": "string"
-                },
-                "mainImage": {
-                  "type": "string"
-                },
-                "markdownContent_pt_BR": {
-                  "type": "string"
-                },
-                "authors": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "mainTag": {
-                  "type": "string"
-                },
-                "tags": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          },
-          "tag": {
+          "value_pt_BR": {
             "type": "string"
           }
         }
       },
-      "NewPosttags": {
+      "NewTags": {
         "required": [
-          "tag_pt_BR"
+          "key"
         ],
         "properties": {
-          "tag_pt_BR": {
-            "type": "string",
-            "maxLength": 100,
-            "minLength": 1
+          "key": {
+            "type": "string"
           },
-          "mainPosts": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "posts": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "tag": {
+          "value_pt_BR": {
             "type": "string"
           }
         }
@@ -644,7 +542,7 @@
   },
   "tags": [
     {
-      "name": "Posttags"
+      "name": "Tags"
     }
   ]
 }

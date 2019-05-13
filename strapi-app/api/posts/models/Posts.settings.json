@@ -28,17 +28,8 @@
     },
     "authors": {
       "collection": "authors",
-      "dominant": true,
-      "via": "posts"
-    },
-    "mainTag": {
-      "model": "posttags",
-      "via": "mainPosts"
-    },
-    "tags": {
-      "collection": "posttags",
-      "dominant": true,
-      "via": "posts"
+      "via": "posts",
+      "dominant": true
     }
   }
 }
