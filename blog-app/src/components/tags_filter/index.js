@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import strapiApi from "../../services/strapiApi";
 import queryString from 'query-string';
 
-
+// TODO: Utilizar Redux para mapear o status selecionado
 class TagsFilter extends Component {
     state = {
         loading: false,
