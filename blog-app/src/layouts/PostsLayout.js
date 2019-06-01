@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import BaseLayout from './base_layout';
-import { updateActiveMenuItem } from '../components/header/actions';
+import { updateActiveMenuItem } from '../actions';
 import { POSTS } from '../components/header/menu_items';
 import { Grid, Card, Image, Icon } from 'semantic-ui-react';
 import TagsMenu from '../components/tags_filter';

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import BaseLayout from './base_layout';
-import {updateActiveMenuItem} from "../components/header/actions";
+import {updateActiveMenuItem} from "../actions";
 import {TAGS} from "../components/header/menu_items";
 
 class TagsLayout extends Component {

@@ -4,7 +4,7 @@ import Header from '../../components/header';
 import Footer from '../../components/footer';
 import { Container } from 'semantic-ui-react';
 import queryString from 'query-string'
-import { updateQueryParams } from './actions'
+import { updateQueryParams } from '../../actions'
 
 
 class BaseLayout extends Component {

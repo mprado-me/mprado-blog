@@ -3,7 +3,7 @@ import { Container, Segment, Grid, List, Divider } from 'semantic-ui-react';
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { Icon } from 'semantic-ui-react'
-import { fetchSocialNetworks } from './actions'
+import { fetchSocialNetworks } from '../../actions'
 
 class Footer extends Component {
     componentDidMount = () => {
