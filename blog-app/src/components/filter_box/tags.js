@@ -83,7 +83,9 @@ class TagsFilterSection extends Component {
     }
 
     componentDidMount = () => {
-        this.props.fetchTags(this.props);
+        if(this.props.tags.length == 0) {
+            this.props.fetchTags(this.props);
+        }
     }
     
     renderTags = () => {
