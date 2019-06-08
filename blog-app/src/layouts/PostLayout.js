@@ -1,12 +1,25 @@
+// Import de módulos de terceiros
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import BaseLayout from './base_layout';
-import { updateActiveMenuItem } from "../components/header/actions";
-import { POSTS } from "../components/header/menu_items";
-import strapiApi, { getStrapiAssetUrl } from "../services/strapiApi";
 import { Grid, Card, Image, Icon } from 'semantic-ui-react';
 import { Markdown } from 'react-showdown';
 
+// Import de módulos locais
+import messages from '../resources/messages';
+import BaseLayout from './base_layout';
+import { updateActiveMenuItem } from "../actions";
+import { POSTS } from "../resources/consts/menu_items";
+import strapiApi, { getStrapiAssetUrl } from "../services/strapiApi";
+
+// Estados iniciais
+
+// Import das ações
+
+// Ações específicas desse componente
+
+// Reducers que impactam esse componente
+
+// Componente
 class PostLayout extends Component {
     state = {
         post: null
@@ -15,12 +28,9 @@ class PostLayout extends Component {
     componentDidMount = async () => {
         this.props.updateActiveMenuItem(POSTS);
 
-        console.log('PostLayout componentDidMount')
-        console.log(this.props);
-
         let response = await strapiApi.get(`/posts/${this.props.match.params.id}`);
         let post = response.data
-        console.log('post', post);
+
         this.setState({ post });
     };
 

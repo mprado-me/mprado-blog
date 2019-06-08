@@ -1,10 +1,21 @@
+// Import de módulos de terceiros
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Menu  } from 'semantic-ui-react';
-import { POSTS, TAGS } from './menu_items';
 import { Link } from 'react-router-dom';
 
+// Import de módulos locais
+import { POSTS, TAGS } from '../../resources/consts/menu_items';
 
+// Estados iniciais
+
+// Import das ações
+
+// Ações específicas desse componente
+
+// Reducers que impactam esse componente
+
+// Componente
 class Header extends Component {
     render() {
         return (

@@ -14,7 +14,7 @@
 sudo npm --prefix blog-app run start || (sudo npm --prefix blog-app install && sudo npm --prefix blog-app run start)
 ```
 
-## Setup em produção (Ubuntu 16.04)
+## Setup em produção (Ubuntu 16.04) - AWS marco.pdsv.2@gmail.com
 
 ### Conectar na VM
 
@@ -86,8 +86,4 @@ sudo docker-compose up -d;
 ```
 ssh -i "~/.ssh/mprado_blog_key.pem" ubuntu@ec2-54-234-143-167.compute-1.amazonaws.com;
 /home/ubuntu/mprado-blog/bash_scripts/update_server.sh;
-```
-
-### Iniciando o strapi
-
 ```

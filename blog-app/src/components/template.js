@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 
 // Import de módulos locais
 import messages from '../resources/messages';
-import BaseLayout from './base_layout';
 
 // Estados iniciais
 
@@ -16,14 +15,19 @@ import BaseLayout from './base_layout';
 // Reducers que impactam esse componente
 
 // Componente
-class NotFoundLayout extends Component {
-    render() {
+class TEMPLATE_COMPONENT extends Component {
+    render = () => {
         return (
-            <BaseLayout location={this.props.location}>
-                <p>404 - Página não encontrada</p>
-            </BaseLayout>
-        );
+            null
+        )
     }
 }
 
-export default NotFoundLayout;
+const mapStateToProps = state => {
+    return null;
+};
+
+export default connect(
+    mapStateToProps,
+    {}
+)(TEMPLATE_COMPONENT);

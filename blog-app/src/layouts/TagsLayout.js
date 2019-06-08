@@ -1,9 +1,22 @@
+// Import de módulos de terceiros
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import BaseLayout from './base_layout';
-import {updateActiveMenuItem} from "../components/header/actions";
-import {TAGS} from "../components/header/menu_items";
 
+// Import de módulos locais
+import messages from '../resources/messages';
+import BaseLayout from './base_layout';
+import {updateActiveMenuItem} from "../actions";
+import {TAGS} from "../resources/consts/menu_items";
+
+// Estados iniciais
+
+// Import das ações
+
+// Ações específicas desse componente
+
+// Reducers que impactam esse componente
+
+// Componente
 class TagsLayout extends Component {
     componentDidMount = () => {
         this.props.updateActiveMenuItem(TAGS);
@@ -17,7 +30,6 @@ class TagsLayout extends Component {
         );
     }
 }
-
 
 const mapStateToProps = state => {
     return {};
