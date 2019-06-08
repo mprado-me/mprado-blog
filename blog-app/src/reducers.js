@@ -2,7 +2,9 @@ import { combineReducers } from 'redux';
 
 import { UPDATE_QUERY_PARAMS } from './actions';
 import { UPDATE_ACTIVE_MENU_ITEM } from './actions';
-import { FETCH_SOCIAL_NETWORKS } from './actions';
+
+import { socialNetworksReducer } from './components/footer'
+import { filterBoxTagsReducer } from './components/filter_box/tags';
 
 export const updateActiveMenuItemReducer = (state = "", action) => {
     switch (action.type) {
@@ -16,16 +18,7 @@ export const updateActiveMenuItemReducer = (state = "", action) => {
 export const updateQueryParamsReducer = (state = {}, action) => {
     switch(action.type) {
         case UPDATE_QUERY_PARAMS:
-            return action.queryParams;
-        default:
-            return state;
-    }
-};
-
-export const fetchSocialNetworksReducer = (state = [], action) => {
-    switch (action.type) {
-        case FETCH_SOCIAL_NETWORKS:
-            return action.payload;
+            return {...state, ...action.queryParams};
         default:
             return state;
     }
@@ -33,6 +26,11 @@ export const fetchSocialNetworksReducer = (state = [], action) => {
 
 export default combineReducers({
     activeMenuItem: updateActiveMenuItemReducer,
-    socialNetworks: fetchSocialNetworksReducer,
-    queryParams: updateQueryParamsReducer
+    footer: combineReducers({
+        socialNetworks: socialNetworksReducer
+    }),
+    queryParams: updateQueryParamsReducer,
+    filterBox: combineReducers({
+        tags: filterBoxTagsReducer
+    })
 });

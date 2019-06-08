@@ -1,10 +1,46 @@
+// Import de módulos de terceiros
 import React, { Component } from 'react';
 import { Container, Segment, Grid, List, Divider } from 'semantic-ui-react';
-import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { Icon } from 'semantic-ui-react'
-import { fetchSocialNetworks } from '../../actions'
+import { connect } from "react-redux";
 
+// Import de módulos locais
+import messages from '../../resources/messages';
+import strapiApi from "../../services/strapiApi";
+
+// Import das ações
+import { FETCH_SOCIAL_NETWORKS } from '../../actions';
+
+// Estados iniciais
+const socialNetworksInitialState = [];
+
+// Ações específicas desse componente
+export const fetchSocialNetworks = () => async dispatch => {
+    let payload = {};
+    
+    const response = await strapiApi.get('/socialnetworks');
+    payload.newSocialNetworks = response.data;
+
+    dispatch({ type: FETCH_SOCIAL_NETWORKS, payload });
+};
+
+// Reducers que impactam esse componente
+export const socialNetworksReducer = (state = socialNetworksInitialState, action) => {
+    switch (action.type) {
+        case FETCH_SOCIAL_NETWORKS:
+            if(action.payload.newSocialNetworks) {
+                return action.payload.newSocialNetworks;
+            }
+            else {
+                return state;
+            }
+        default:
+            return state;
+    }
+};
+
+// Componente
 class Footer extends Component {
     componentDidMount = () => {
         this.props.fetchSocialNetworks();
@@ -53,11 +89,12 @@ class Footer extends Component {
                 </Segment>
             </Segment.Group>
         );
-    };
+
+    }
 }
 
 const mapStateToProps = state => {
-    return { socialNetworks: state.socialNetworks };
+    return state.footer;
 };
 
 export default connect(

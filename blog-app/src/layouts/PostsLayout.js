@@ -1,14 +1,26 @@
+// Import de módulos de terceiros
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import BaseLayout from './base_layout';
-import { updateActiveMenuItem } from '../actions';
-import { POSTS } from '../components/header/menu_items';
 import { Grid, Card, Image, Icon } from 'semantic-ui-react';
-import TagsMenu from '../components/tags_filter';
-import strapiApi, { getStrapiAssetUrl } from "../services/strapiApi";
 import { Link } from 'react-router-dom';
 
-// Utilizar apenas um único arquivo para armazenar as actions e reducers
+// Import de módulos locais
+import messages from '../resources/messages';
+import BaseLayout from './base_layout';
+import { updateActiveMenuItem } from '../actions';
+import { POSTS } from '../resources/consts/menu_items';
+import FilterBox from '../components/filter_box';
+import strapiApi, { getStrapiAssetUrl } from "../services/strapiApi";
+
+// Estados iniciais
+
+// Import das ações
+
+// Ações específicas desse componente
+
+// Reducers que impactam esse componente
+
+// Componente
 // TODO: Páginar os posts
 // TOOD: Considerar a filtragem na hora de exibir os posts
 class PostsLayout extends Component {
@@ -55,7 +67,7 @@ class PostsLayout extends Component {
                 <Grid style={{ marginTop: 6 }}>
                     <Grid.Row>
                         <Grid.Column width={4}>
-                            <TagsMenu />
+                            <FilterBox />
                         </Grid.Column>
                         <Grid.Column width={12}>
                             <Grid columns={2}>
@@ -70,7 +82,6 @@ class PostsLayout extends Component {
         );
     }
 }
-
 
 const mapStateToProps = state => {
     return {};
