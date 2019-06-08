@@ -605,6 +605,9 @@
                 }
               }
             }
+          },
+          "private": {
+            "type": "boolean"
           }
         }
       },
@@ -629,6 +632,9 @@
             "items": {
               "type": "string"
             }
+          },
+          "private": {
+            "type": "boolean"
           }
         }
       }

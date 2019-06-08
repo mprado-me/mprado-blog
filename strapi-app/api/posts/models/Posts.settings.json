@@ -30,6 +30,9 @@
       "collection": "authors",
       "via": "posts",
       "dominant": true
+    },
+    "private": {
+      "type": "boolean"
     }
   }
 }
