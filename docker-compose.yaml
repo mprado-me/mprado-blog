@@ -46,8 +46,6 @@ services:
     image: strapi/strapi
     env_file:
       - .strapi_env
-    # ports:
-    #   - 1337:1337
     volumes:
       - ./strapi-app:/usr/src/api/strapi-app
     depends_on:
